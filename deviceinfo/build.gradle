@@ -1,0 +1,125 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+}
+/*task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+group = 'com.example.kannas.testlibraryproject'
+version = '0.1.1'
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'Naughty or Nice'
+            description 'A library for finding out whether someone is on the naughty list or the nice list'
+            url 'https://github.com/northpolecoder/elf'
+            inceptionYear '2016'
+
+            packaging 'aar'
+            groupId 'northpole.nick.android'
+            artifactId 'naughtyornice'
+            version '0.1.1'
+
+            licenses {
+                license {
+                    name 'The MIT License (MIT)'
+                    url 'https://opensource.org/licenses/MIT'
+                }
+            }
+            scm {
+                connection 'https://github.com/northpolecoder/elf.git'
+                url 'https://github.com/northpolecoder/elf'
+
+            }
+            developers {
+                developer {
+                    id = 'northpolecoder'
+                    name 'Nick'
+                }
+            }
+        }
+    }
+}
+
+Properties bintrayProperties = new Properties()
+bintrayProperties.load(project.rootProject.file('bintray.properties').newDataInputStream())
+
+bintray {
+    user = bintrayProperties.getProperty('user')
+    key = bintrayProperties.get('key')
+    configurations = ['archives']
+    pkg {
+        repo = 'android'
+        name = 'naughtyornice'
+        userOrg = 'northpolecoder'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/guardian/piper.git'
+        publish = true
+        version {
+            name = '0.1.1'
+            desc = 'Naughty or Nice 0.1.1'
+            released = new Date()
+            vcsTag = 'v0.1.1'
+        }
+    }
+}*/
+/*task deleteJar(type: Delete) {
+    delete 'libs/deviceinfo.jar'
+}
+
+task createJar(type: Copy) {
+    from('build/intermediates/bundles/debug/')
+    into('libs/jars/')
+    include('classes.jar')
+    rename('classes.jar', 'deviceinfo.jar')
+}
+
+createJar.dependsOn(deleteJar, build)*/
+
+
